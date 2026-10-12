@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #11252B;
+  --color-midnight-2: #0C1B20;
+  --color-ivory: #F6F3EC;
+  --color-ivory-2: #EFE9DC;
+  --color-gold: #C5A574;
+  --color-gold-light: #D8C09A;
+  --color-teal: #426E70;
+  --color-teal-dark: #2F5052;
+  --color-slate-custom: #6C7778;
+  --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-system, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: #F6F3EC; color: #11252B; -webkit-font-smoothing: antialiased; }
+::selection { background: #C5A574; color: #11252B; }
+
+/* Focus visibility */
+:focus-visible { outline: 2px solid #C5A574; outline-offset: 3px; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .12s; }
+.reveal-delay-2 { transition-delay: .24s; }
+.reveal-delay-3 { transition-delay: .36s; }
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroImg {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
+}
+@keyframes scrollPulse {
+  0%,100% { transform: translateY(0); opacity: .9; }
+  50% { transform: translateY(8px); opacity: .4; }
+}
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(.985) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-anim { animation: heroFadeUp 1s cubic-bezier(.22,1,.36,1) both; }
+.hero-anim-1 { animation-delay: .15s; }
+.hero-anim-2 { animation-delay: .3s; }
+.hero-anim-3 { animation-delay: .45s; }
+.hero-anim-4 { animation-delay: .6s; }
+.hero-img-anim { animation: heroImg 2.2s cubic-bezier(.22,1,.36,1) both; }
+.scroll-pulse { animation: scrollPulse 2.2s ease-in-out infinite; }
+.lightbox-anim { animation: lightboxIn .35s cubic-bezier(.22,1,.36,1) both; }
+.menu-anim { animation: menuIn .3s ease both; }
+
+.text-balance { text-wrap: balance; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
